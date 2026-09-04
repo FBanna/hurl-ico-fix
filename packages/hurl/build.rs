@@ -35,6 +35,10 @@ fn set_icon() {}
 fn main() {
     let project_root = Path::new(env!("CARGO_MANIFEST_DIR"));
     let native_src = project_root.join("native");
+
+    println!("cargo:rustc-link-lib=static=nghttp2");
+    println!("cargo:rustc-link-lib=static=zlib");
+    
     //set_icon();
     Build::new()
         .file(native_src.join("libxml.c"))
